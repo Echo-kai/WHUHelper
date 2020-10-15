@@ -6,11 +6,10 @@ import java.util.List;
 public class Administrator extends Participant{
 
     @Override
-    void login() {
-        /*验证登录
-
-         */
+    Participant getGroup(String name) {
+        return new Administrator();
     }
+
     //获取所有订单
     public List<Order> searchOrders(){
         return new ArrayList<>();
