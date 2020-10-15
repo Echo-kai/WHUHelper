@@ -9,12 +9,13 @@ public class User extends Participant {
 
     List<Order> selfOrders;
 
-    @Override
-    void login() {
-        /*验证登录
+    private static OrderManager orderManager = OrderManager.getOrderManager();
 
-         */
+    @Override
+    Participant getGroup(String name) {
+        return new User();
     }
+
     //注册
     public void register(){
 
@@ -33,14 +34,20 @@ public class User extends Participant {
     }
     //创建订单
     public Order addOrder(Order order){
+        orderManager.addOrder(this);
+        selfOrders.add(order);
         return order;
     }
     //接受订单
     public Order acceptedOrder(Order order){
+        acceptedOrder = order;
         return order;
     }
     //删除自己的订单
     public Order deleteOrder(Order order){
+        orderManager.deleteOrder(this);
+        selfOrders.remove(order);
         return order;
     }
+
 }
