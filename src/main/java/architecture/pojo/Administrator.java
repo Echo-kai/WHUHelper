@@ -1,11 +1,11 @@
-package architecture;
+package architecture.pojo;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Administrator extends Participant{
+public class Administrator{
 
-    @Override
+    /*@Override
     Participant getGroup(String name) {
         return new Administrator();
     }
@@ -17,5 +17,5 @@ public class Administrator extends Participant{
     //删除订单
     public Order deleteOrders(Order order){
         return order;
-    }
+    }*/
 }

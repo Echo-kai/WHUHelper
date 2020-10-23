@@ -1,15 +1,24 @@
-package architecture;
+package architecture.pojo;
+
+import lombok.Data;
+import org.apache.ibatis.type.Alias;
 
 import java.util.ArrayList;
 import java.util.List;
+@Data
+@Alias("user")
+public class User {
 
-public class User extends Participant {
+    Long id;
 
-    Order acceptedOrder;
+    String name;
+
+    String password;
+
+    /*Order acceptedOrder;
 
     List<Order> selfOrders;
 
-    private static OrderManager orderManager = OrderManager.getOrderManager();
 
     @Override
     Participant getGroup(String name) {
@@ -34,7 +43,6 @@ public class User extends Participant {
     }
     //创建订单
     public Order addOrder(Order order){
-        orderManager.addOrder(this);
         selfOrders.add(order);
         return order;
     }
@@ -45,9 +53,8 @@ public class User extends Participant {
     }
     //删除自己的订单
     public Order deleteOrder(Order order){
-        orderManager.deleteOrder(this);
         selfOrders.remove(order);
         return order;
-    }
+    }*/
 
 }
