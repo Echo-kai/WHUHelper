@@ -9,7 +9,13 @@
     <select id="getPassword" parameterType="long" resultType="string">
         select password from w_user where id = #{id}
     </select>
+    <select id="getPasswordByUsername" parameterType="string" resultType="string">
+        select password from w_user where username=#{username}
+    </select>
     <select id="getAllUser" resultType="user">
         select * from w_user
+    </select>
+    <select id="getIdByUsername" parameterType="string" resultType="long">
+        select id from w_user where username = #{username}
     </select>
 </mapper>

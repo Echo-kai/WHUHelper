@@ -13,7 +13,10 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserDao userDao = null;
 
-
+    @Override
+    public String getPasswordByUsername(String username) {
+        return userDao.getPasswordByUsername(username);
+    }
 
     @Override
     public User getUser(Long id) {
@@ -28,5 +31,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAllUser(){
         return userDao.getAllUser();
+    }
+
+    @Override
+    public Long getIdByUsername(String username) {
+        return userDao.getIdByUsername(username);
     }
 }

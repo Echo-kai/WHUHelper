@@ -9,5 +9,9 @@ public interface UserService {
 
     String getPassword(Long id);
 
+    String getPasswordByUsername(String username);
+
     List<User> getAllUser();
+
+    Long getIdByUsername(String username);
 }

@@ -9,7 +9,7 @@ import java.util.List;
 public interface OrderDao {
     Order getOrderByUser(Long userId);
 
-    List<Order> getAllOrder();
+    List<Order> getAllOrders();
 
     List<Order> getAllSelfOrder(Long userId);
 
@@ -17,9 +17,15 @@ public interface OrderDao {
 
     int addOrder(Order order);
 
-    int deleteOrder(Order orderId);
+    int deleteOrder(Long orderId);
 
-    int acceptedOrder(Long orderId, Long userId);
+    List<Order> getAcceptOrder(Long userId);
 
-    int updateOrder(Order order);
+    List<Long> getAllAcceptOrders();
+
+    int acceptedOrder(Long orderId, Long userId, Long belongId);
+
+    void updateOrder(Order order);
+
+    Long getOrderAccepter(Long orderId);
 }

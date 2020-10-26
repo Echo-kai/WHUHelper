@@ -21,7 +21,7 @@ public class OrderServiceImpl implements  OrderService {
 
     @Override
     public List<Order> getAllOrder() {
-        return orderDao.getAllOrder();
+        return orderDao.getAllOrders();
     }
 
     @Override
@@ -35,7 +35,7 @@ public class OrderServiceImpl implements  OrderService {
     }
 
     @Override
-    public int deleteOrder(Order orderId) {
+    public int deleteOrder(Long orderId) {
         return orderDao.deleteOrder(orderId);
     }
 
@@ -44,11 +44,30 @@ public class OrderServiceImpl implements  OrderService {
         return orderDao.displayOrderByOrderId(orderId);
     }
 
+    @Override
+    public List<Order> getAcceptOrder(Long userId) {
+        return orderDao.getAcceptOrder(userId);
+    }
+
+    @Override
+    public List<Long> getAllAcceptOrders() {
+        return orderDao.getAllAcceptOrders();
+    }
+
+    @Override
+    public void updateOrder(Order order) {
+        orderDao.updateOrder(order);
+    }
+
+    @Override
+    public Long getOrderAccepter(Long orderId) {
+        return orderDao.getOrderAccepter(orderId);
+    }
+
     //门面模式
     @Override
-    public int userAccepted(Order order, User user) {
-        orderDao.acceptedOrder(order.getId(), user.getId());
-        orderDao.updateOrder(order);
+    public int userAccepted(Long orderId, Long userId, Long belongId) {
+        orderDao.acceptedOrder(orderId, userId, belongId);
         return 0;
     }
 }

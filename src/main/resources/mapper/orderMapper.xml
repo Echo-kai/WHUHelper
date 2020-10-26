@@ -3,5 +3,37 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="architecture.dao.OrderDao">
-
+    <select id="getAllOrders" resultType="order">
+        select * from w_orders
+    </select>
+    <insert id="addOrder">
+        insert into w_orders(belong, title, detail, experience, requestAddress, creatTime, requestTime)
+        values ( #{belong}, #{title}, #{detail}, #{experience}, #{requestAddress}, #{creatTime}, #{requestTime} )
+    </insert>
+    <select id="displayOrderByOrderId" parameterType="long" resultType="order">
+        select * from w_orders where id=#{orderId}
+    </select>
+    <select id="getAllSelfOrder" parameterType="long" resultType="order">
+        select * from w_orders where belong=#{userId}
+    </select>
+    <select id="getAcceptOrder" parameterType="long" resultType="order">
+        select * from w_orders where id in (select orderId from w_accepted where userId = #{userId})
+    </select>
+    <delete id="deleteOrder">
+        delete  from w_orders where id=#{orderId}
+    </delete>
+    <select id="getAllAcceptOrders" resultType="long">
+        select orderId from w_accepted
+    </select>
+    <insert id="acceptedOrder">
+        insert into w_accepted(userId,ownerId,orderId) values ( #{userId},#{belongId},#{orderId})
+    </insert>
+    <update id="updateOrder">
+        update w_orders set title=#{title},detail=#{detail},experience=#{experience},
+                            requestAddress=#{requestAddress},creatTime=#{creatTime},
+                            requestTime=#{requestTime} where id=#{id}
+    </update>
+    <select id="getOrderAccepter" parameterType="long" resultType="long">
+        select userId from w_accepted where orderId=#{orderId}
+    </select>
 </mapper>

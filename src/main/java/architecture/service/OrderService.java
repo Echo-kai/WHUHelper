@@ -12,11 +12,19 @@ public interface OrderService {
 
     List<Order> getAllSelfOrder(Long userId);
 
+    List<Order> getAcceptOrder(Long userId);
+
+    List<Long> getAllAcceptOrders();
+
     int addOrder(Order order);
 
-    int deleteOrder(Order orderId);
+    int deleteOrder(Long orderId);
+
+    void updateOrder(Order order);
 
     Order displayOrderByOrderId(Long orderId);
 
-    int userAccepted(Order order, User user);
+    int userAccepted(Long orderId, Long userId, Long belongId);
+
+    Long getOrderAccepter(Long orderId);
 }
